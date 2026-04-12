@@ -763,7 +763,10 @@ function openSwapModal(key,mname){
 }
 
 // ── HELPERS ──
-function getDayIdx(){return Math.max(0,Math.min(Math.floor((new Date()-START)/86400000),41));}
+function getRawDayIdx(){return Math.floor((new Date()-START)/86400000);}
+function getDayIdx(){return Math.max(0,Math.min(getRawDayIdx(),41));}
+function isProgramStarted(){return getRawDayIdx()>=0;}
+function daysUntilStart(){return Math.ceil((START-new Date())/86400000);}
 function getW(){return Math.floor(getDayIdx()/7)+1;}
 function getDow(){return getDayIdx()%7;}
 
@@ -784,6 +787,23 @@ function initToday(){try{
   const h=new Date().getHours();
   document.getElementById('greeting').textContent=h<12?'Good morning':h<17?'Good afternoon':'Good evening';
   document.getElementById('today-date').textContent=fmtDate(new Date());
+  // ── PRE-START STATE ──
+  if(!isProgramStarted()){
+    const days=daysUntilStart();
+    document.getElementById('hero-day').textContent='Program starts in';
+    document.getElementById('hero-title').textContent=days+' day'+(days===1?'':'s');
+    document.getElementById('hero-sub').textContent='Starting Monday, April 13 — get ready!';
+    document.getElementById('hero-badges').innerHTML='<span class="hero-badge">Apr 13 · Week 1</span><span class="hero-badge">Strength A first</span>';
+    document.getElementById('week-num').innerHTML='0 <span class="m-unit">of 6</span>';
+    document.getElementById('prog-day').textContent='Starting Apr 13';
+    updateSessCount();updateWtCard();
+    // Show grocery reminder for the weekend before start
+    document.getElementById('oats-wrap').innerHTML='<div class="reminder"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><div class="reminder-text">Weekend prep: do your Week 1 grocery shop before Monday. Check the Grocery tab!</div></div>';
+    // Still show supplement and daily checklists
+    buildDailyChk();buildSuppChk();
+    buildPreStartChk();
+    return;
+  }
   const dow=getDow(),w=getW(),day=SCHED[dow];
   document.getElementById('hero-day').textContent=`Week ${w} · ${day.day}`;
   document.getElementById('hero-title').textContent=day.session;
@@ -808,6 +828,20 @@ function updateSessCount(){
   const done=G('sess_done')||0;
   document.getElementById('sess-done').innerHTML=`${done} <span class="m-unit">/ 18</span>`;
   document.getElementById('sess-bar').style.width=Math.round((Math.min(done,18)/18)*100)+'%';
+}
+function buildPreStartChk(){
+  var key='chk_pre', saved=G(key)||{};
+  var items=[
+    {id:'prep1',label:'Complete Week 1 grocery shop',d:'Check the Grocery tab for the full list'},
+    {id:'prep2',label:'Buy resistance bands (Canadian Tire / Sport Chek ~$25-40)',d:'Needed for band hip abduction in Workout A'},
+    {id:'prep3',label:'Set up basement gym space',d:'Mat, dumbbells, bench, stability ball — all within reach'},
+    {id:'prep4',label:'Take baseline photos today (front + side)',d:'You will thank yourself in 6 weeks'},
+    {id:'prep5',label:'Order or pick up supplements',d:'Vitamin D3, CoQ10, Omega-3 — see Supplements section below'},
+  ];
+  document.getElementById('today-chk').innerHTML=items.map(function(i){
+    var on=saved[i.id]?'on':'', done=saved[i.id]?'done':'';
+    return '<div class="chk-item" onclick="togChk(this,\''+i.id+'\',\''+key+'\')"><div class="chk-box '+on+'"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div><div><div class="chk-name '+done+'">'+i.label+'</div><div class="chk-detail">'+i.d+'</div></div></div>';
+  }).join('');
 }
 var _chkKey='',_suppKey='';
 function buildTodayChk(day,dow,w){
@@ -1120,8 +1154,9 @@ let grocViewWeek = null; // null = next week by default
 
 function getGrocWeek() {
   if (grocViewWeek !== null) return grocViewWeek;
+  // Before program starts always show Week 1
+  if (!isProgramStarted()) return 1;
   const cur = getW();
-  // If today is Sat or Sun, show next week
   const dow = getDow();
   if (dow >= 5) return Math.min(cur + 1, 6);
   return cur;

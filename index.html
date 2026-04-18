@@ -118,6 +118,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .meal-item{font-size:13px;color:var(--text2);line-height:1.6;padding:1px 0;}
 .meal-macros{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;}
 .mac-chip{font-size:11px;font-weight:500;padding:3px 8px;border-radius:6px;background:var(--bg);color:var(--text2);border:1px solid var(--border);font-family:'DM Mono',monospace;}
+.mac-p{background:#EFF6FF;color:#1D4ED8;border-color:#BFDBFE;}
+.mac-c{background:#FEF9C3;color:#854D0E;border-color:#FDE68A;}
+.mac-f{background:#FFF7ED;color:#C2410C;border-color:#FED7AA;}
 .meal-tag{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;margin-left:5px;}
 .t-indian{background:#FEF3C7;color:#92400E;}
 .t-veg{background:var(--green-l);color:#166534;}
@@ -218,6 +221,62 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 input[type=number]{-moz-appearance:textfield;}
 input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;}
 select,input{font-family:'DM Sans',sans-serif;}
+
+
+/* ── EXPANDABLE MEAL ROWS ── */
+.meal-row{cursor:pointer;transition:background .15s;}
+.meal-row:active{background:var(--bg);}
+.meal-row-header{display:flex;align-items:center;justify-content:space-between;padding:13px 0 6px;}
+.meal-chevron{font-size:14px;color:var(--text3);transition:transform .25s;flex-shrink:0;margin-left:8px;}
+.meal-row.open .meal-chevron{transform:rotate(180deg);}
+.meal-items-wrap{overflow:hidden;max-height:0;transition:max-height .3s ease;}
+.meal-row.open .meal-items-wrap{max-height:600px;}
+.meal-item-row{display:flex;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);}
+.meal-item-row:last-child{border-bottom:none;}
+.meal-item-name{font-size:13px;color:var(--text2);flex:1;line-height:1.4;padding-right:8px;}
+.meal-item-macros{display:flex;gap:4px;flex-shrink:0;}
+.item-chip{font-size:10px;font-weight:600;padding:2px 5px;border-radius:4px;font-family:'DM Mono',monospace;white-space:nowrap;}
+.ic-k{background:var(--bg);color:var(--text3);border:1px solid var(--border);}
+.ic-p{background:#EFF6FF;color:#1D4ED8;}
+.ic-c{background:#FEF9C3;color:#854D0E;}
+.ic-f{background:#FFF7ED;color:#C2410C;}
+.meal-totals-row{display:flex;gap:6px;padding:10px 0 4px;border-top:2px solid var(--border);margin-top:4px;flex-wrap:wrap;align-items:center;}
+.meal-totals-label{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-right:2px;}
+
+/* ── TODAY MEAL CARD ── */
+.meal-now-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin:10px 16px 0;overflow:hidden;}
+.meal-now-hdr{padding:10px 14px 0;display:flex;align-items:center;justify-content:space-between;}
+.meal-now-badge{font-size:10px;font-weight:700;padding:3px 9px;border-radius:99px;letter-spacing:.04em;text-transform:uppercase;}
+.badge-now{background:var(--teal);color:white;}
+.badge-next{background:var(--teal-l);color:var(--teal-d);}
+.meal-now-time{font-size:12px;color:var(--text3);font-family:'DM Mono',monospace;}
+.meal-now-name{font-size:17px;font-weight:600;color:var(--text);padding:4px 14px 0;}
+.meal-now-items{padding:6px 14px 10px;}
+.meal-now-item{font-size:13px;color:var(--text2);padding:2px 0;line-height:1.5;}
+.meal-now-macros{display:flex;gap:6px;padding:0 14px 12px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:10px;margin-top:2px;}
+.meal-now-nav{display:flex;border-top:1px solid var(--border);}
+.meal-nav-btn{flex:1;padding:10px;background:none;border:none;font-size:12px;font-weight:600;color:var(--teal);cursor:pointer;font-family:'DM Sans',sans-serif;}
+.meal-nav-btn:first-child{border-right:1px solid var(--border);}
+
+/* ── WATER TRACKER ── */
+.water-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin:10px 16px 0;padding:14px 16px;}
+.water-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.water-title{font-size:13px;font-weight:600;color:var(--text);}
+.water-amount{font-size:22px;font-weight:700;color:var(--blue);font-family:'DM Mono',monospace;}
+.water-unit{font-size:13px;font-weight:400;color:var(--text3);}
+.water-target{font-size:11px;color:var(--text3);margin-top:1px;}
+.water-bar-wrap{margin-bottom:12px;}
+.water-bar-bg{background:var(--border);border-radius:99px;height:8px;overflow:hidden;}
+.water-bar-fill{height:100%;border-radius:99px;background:var(--blue);transition:width .4s ease;}
+.water-bar-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--text3);margin-top:4px;}
+.water-btns{display:flex;gap:8px;}
+.water-btn{flex:1;padding:10px 6px;border-radius:10px;border:1.5px solid var(--blue-l);background:var(--blue-l);font-size:13px;font-weight:600;color:var(--blue);cursor:pointer;font-family:'DM Sans',sans-serif;text-align:center;transition:all .15s;}
+.water-btn:active{transform:scale(.96);}
+.water-btn-clear{background:var(--bg);border-color:var(--border);color:var(--text3);font-size:12px;flex:0 0 60px;}
+.water-cups{display:flex;gap:5px;margin-bottom:12px;flex-wrap:wrap;}
+.water-cup{width:32px;height:32px;border-radius:8px;border:2px solid var(--border);background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .2s;}
+.water-cup.filled{background:var(--blue-l);border-color:#93C5FD;}
+
 /* ── GROCERY ── */
 .groc-banner{background:var(--teal-l);border:1px solid #9FE1CB;border-radius:var(--radius-s);margin:10px 16px 0;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
 .groc-info{font-size:13px;color:var(--teal-d);font-weight:600;line-height:1.4;}
@@ -279,6 +338,8 @@ select,input{font-family:'DM Sans',sans-serif;}
     <div class="quick-btn" id="tread-qbtn" style="display:none" onclick="openTreadModal()"><div class="q-icon">🏃</div><div class="q-label">Log walk</div></div>
     <div class="quick-btn" onclick="showScreen('notes',document.querySelectorAll('.nav-btn')[5])"><div class="q-icon">📝</div><div class="q-label">Note</div></div>
   </div>
+  <div id="meal-now-wrap"></div>
+  <div id="water-wrap"></div>
   <div class="m-grid">
     <div class="m-card"><div class="m-label">Week</div><div class="m-val" id="week-num">1 <span class="m-unit">of 6</span></div><div class="m-sub" id="prog-day">Day 1 of 42</div></div>
     <div class="m-card"><div class="m-label">Sessions done</div><div class="m-val" id="sess-done">0 <span class="m-unit">/ 18</span></div><div class="prog-bg"><div class="prog-fill" id="sess-bar" style="width:0%"></div></div></div>
@@ -289,8 +350,6 @@ select,input{font-family:'DM Sans',sans-serif;}
   <div class="card"><div class="card-body" id="today-chk"></div></div>
   <div class="sec-label">Daily non-negotiables</div>
   <div class="card"><div class="card-body" id="daily-chk"></div></div>
-  <div class="sec-label">Supplements — both partners</div>
-  <div class="card"><div class="card-body" id="supp-chk"></div></div>
 </div>
 
 <div class="screen" id="sc-workout">
@@ -325,13 +384,8 @@ select,input{font-family:'DM Sans',sans-serif;}
   <div class="day-pills" id="meal-pills"></div>
   <div class="sec-label" id="meal-day-lbl">Monday</div>
   <div class="card"><div class="card-body" id="meal-list"></div></div>
-  <div class="sec-label">Daily targets</div>
-  <div class="m-grid">
-    <div class="m-card"><div class="m-label">Calories</div><div class="m-val">1,950<span class="m-unit"> kcal</span></div></div>
-    <div class="m-card"><div class="m-label">Protein</div><div class="m-val">150<span class="m-unit"> g</span></div></div>
-    <div class="m-card"><div class="m-label">Carbs</div><div class="m-val">190<span class="m-unit"> g</span></div></div>
-    <div class="m-card"><div class="m-label">Fat</div><div class="m-val">60<span class="m-unit"> g</span></div></div>
-  </div>
+  <div class="sec-label">Day totals</div>
+  <div class="m-grid" id="meal-day-totals"></div>
   <div class="sec-label">Indian cooking rules</div>
   <div class="card"><div class="card-body">
     <div class="ex-row"><div class="ex-name" style="font-size:13px">1 tsp oil per dish</div><div class="ex-note" style="margin-top:3px">Saves 150–200 kcal/day without changing flavour</div></div>
@@ -503,7 +557,7 @@ select,input{font-family:'DM Sans',sans-serif;}
 </div>
 
 <script>
-const START=new Date('2026-04-13');
+const START=new Date(2026,3,13); // April 13 local time (month is 0-indexed)
 const BW=102.5;
 const CIRC=358;
 const G=k=>{try{return JSON.parse(localStorage.getItem(k)||'null');}catch(e){return null;}};
@@ -557,52 +611,185 @@ const WB=[
 
 const MEALS={
   Mon:{label:'Monday',veg:false,meals:[
-    {name:'Breakfast',time:'7:00 AM',items:['3 scrambled eggs in 1 tsp ghee','1 roti or whole wheat toast','1 medium banana or papaya'],kcal:'~390',p:'~26g',sw:'breakfast'},
-    {name:'Mid-morning snack',time:'10:00 AM',items:['1 scoop whey protein shake','Small handful walnuts (20g)'],kcal:'~175',p:'~28g'},
-    {name:'Lunch',time:'1:00 PM',tags:['indian'],items:['1 cup dal (toor or moong)','1 cup chicken curry (2 pieces, no skin)','¾ cup cooked rice','1 cup mixed sabzi','Kachumber salad + lemon on dal'],kcal:'~540',p:'~48g',sw:'lnv'},
-    {name:'Post-work snack',time:'4:00 PM',items:['1 cup low-fat Greek yogurt or dahi','1 medium apple or pear'],kcal:'~200',p:'~15g'},
-    {name:'Dinner',time:'7:00 PM',tags:['indian'],items:['1 cup rajma or chhole','2 small phulka rotis (no butter)','1 cup raita (dahi + cucumber + jeera)','Palak or methi sabzi'],kcal:'~480',p:'~28g',sw:'di'},
+    {name:'Breakfast',time:'7:00 AM',kcal:'390',p:'26',c:'38',f:'14',sw:'breakfast',items:[
+      {n:'3 scrambled eggs in 1 tsp ghee',kcal:220,p:18,c:2,f:16},
+      {n:'1 roti or whole wheat toast',kcal:100,p:3,c:20,f:2},
+      {n:'1 medium banana or papaya',kcal:70,p:1,c:18,f:0},
+    ]},
+    {name:'Mid-morning snack',time:'10:00 AM',kcal:'175',p:'28',c:'6',f:'6',items:[
+      {n:'1 scoop whey protein shake',kcal:120,p:25,c:3,f:2},
+      {n:'Small handful walnuts (20g)',kcal:55,p:1,c:1,f:6},
+    ]},
+    {name:'Lunch',time:'1:00 PM',tags:['indian'],kcal:'540',p:'48',c:'54',f:'12',sw:'lnv',items:[
+      {n:'1 cup dal (toor or moong)',kcal:120,p:9,c:20,f:1},
+      {n:'1 cup chicken curry (2 pieces, no skin)',kcal:220,p:30,c:6,f:8},
+      {n:'¾ cup cooked rice',kcal:150,p:3,c:33,f:0},
+      {n:'1 cup mixed sabzi',kcal:40,p:2,c:7,f:1},
+      {n:'Kachumber salad + lemon on dal',kcal:15,p:0,c:3,f:0},
+    ]},
+    {name:'Post-work snack',time:'4:00 PM',kcal:'200',p:'15',c:'28',f:'3',items:[
+      {n:'1 cup low-fat Greek yogurt or dahi',kcal:100,p:12,c:7,f:2},
+      {n:'1 medium apple or pear',kcal:80,p:0,c:21,f:0},
+    ]},
+    {name:'Dinner',time:'7:00 PM',tags:['indian'],kcal:'480',p:'28',c:'68',f:'8',sw:'di',items:[
+      {n:'1 cup rajma or chhole',kcal:180,p:12,c:30,f:3},
+      {n:'2 small phulka rotis (no butter)',kcal:160,p:5,c:32,f:2},
+      {n:'1 cup raita (dahi + cucumber + jeera)',kcal:70,p:5,c:7,f:2},
+      {n:'Palak or methi sabzi',kcal:50,p:3,c:6,f:1},
+    ]},
   ]},
   Tue:{label:'Tuesday — vegetarian',veg:true,meals:[
-    {name:'Breakfast — overnight oats',time:'7:00 AM',tags:['veg'],items:['½ cup rolled oats + 200ml low-fat milk','1 scoop whey protein (stirred in Monday night)','1 tbsp chia seeds','Top with banana or berries'],kcal:'~420',p:'~36g'},
-    {name:'Mid-morning snack',time:'10:00 AM',tags:['veg'],items:['1 cup plain dahi with jeera','Handful roasted chana (30g)'],kcal:'~180',p:'~14g'},
-    {name:'Lunch',time:'1:00 PM',tags:['indian','veg'],items:['1 cup chana masala or rajma','1 cup yellow moong dal','¾ cup rice or 2 rotis','1 cup sabzi + kachumber salad','Lemon on dal'],kcal:'~530',p:'~28g',sw:'lv'},
-    {name:'Post-work snack',time:'4:00 PM',tags:['veg'],items:['1 scoop whey shake','1 medium apple or pear'],kcal:'~175',p:'~27g'},
-    {name:'Dinner',time:'7:00 PM',tags:['indian','veg'],items:['Paneer bhurji — 80g paneer with onion, tomato, capsicum','2 small phulka rotis','1 cup dal or sabzi','1 cup raita + palak/methi'],kcal:'~490',p:'~30g',sw:'dv'},
+    {name:'Breakfast — overnight oats',time:'7:00 AM',tags:['veg'],kcal:'420',p:'36',c:'48',f:'9',items:[
+      {n:'½ cup rolled oats + 200ml low-fat milk',kcal:180,p:9,c:28,f:4},
+      {n:'1 scoop whey protein',kcal:120,p:25,c:3,f:2},
+      {n:'1 tbsp chia seeds',kcal:58,p:2,c:5,f:4},
+      {n:'Banana or berries topping',kcal:62,p:1,c:15,f:0},
+    ]},
+    {name:'Mid-morning snack',time:'10:00 AM',tags:['veg'],kcal:'180',p:'14',c:'22',f:'4',items:[
+      {n:'1 cup plain dahi with jeera',kcal:100,p:9,c:8,f:3},
+      {n:'Handful roasted chana (30g)',kcal:80,p:5,c:12,f:2},
+    ]},
+    {name:'Lunch',time:'1:00 PM',tags:['indian','veg'],kcal:'530',p:'28',c:'82',f:'8',sw:'lv',items:[
+      {n:'1 cup chana masala or rajma',kcal:180,p:10,c:30,f:3},
+      {n:'1 cup yellow moong dal',kcal:120,p:9,c:20,f:1},
+      {n:'¾ cup rice or 2 rotis',kcal:150,p:4,c:32,f:1},
+      {n:'1 cup sabzi + kachumber salad',kcal:55,p:2,c:10,f:1},
+      {n:'Lemon on dal',kcal:4,p:0,c:1,f:0},
+    ]},
+    {name:'Post-work snack',time:'4:00 PM',tags:['veg'],kcal:'175',p:'27',c:'22',f:'2',items:[
+      {n:'1 scoop whey shake',kcal:120,p:25,c:3,f:2},
+      {n:'1 medium apple or pear',kcal:80,p:0,c:21,f:0},
+    ]},
+    {name:'Dinner',time:'7:00 PM',tags:['indian','veg'],kcal:'490',p:'30',c:'52',f:'16',sw:'dv',items:[
+      {n:'Paneer bhurji — 80g paneer',kcal:220,p:14,c:6,f:16},
+      {n:'2 small phulka rotis',kcal:160,p:5,c:32,f:2},
+      {n:'1 cup dal or sabzi',kcal:60,p:5,c:10,f:1},
+      {n:'1 cup raita + palak/methi',kcal:70,p:5,c:7,f:2},
+    ]},
   ]},
   Wed:{label:'Wednesday — pasta night',veg:false,meals:[
-    {name:'Breakfast',time:'7:00 AM',items:['3 scrambled eggs in 1 tsp oil','1 roti or whole wheat toast','1 medium banana'],kcal:'~390',p:'~26g',sw:'breakfast'},
-    {name:'Mid-morning snack',time:'10:00 AM',items:['1 scoop whey shake','1 orange or apple'],kcal:'~160',p:'~26g'},
-    {name:'Lunch',time:'1:00 PM',tags:['indian'],items:['Chicken curry (2 pieces, no skin)','1 cup moong dal','¾ cup cooked rice','1 cup sabzi + salad + lemon on dal'],kcal:'~520',p:'~46g',sw:'lnv'},
-    {name:'Post-work snack',time:'4:00 PM',items:['1 cup dahi with jeera','Handful roasted chana or 1 pear'],kcal:'~180',p:'~12g'},
-    {name:'Dinner — red lentil pasta',time:'7:00 PM',tags:['pasta'],items:['85g Costco red lentil pasta (dry)','Option A: 150g shrimp with garlic + olive oil + chilli','Option B: 100g ground chicken with tomato + herbs','Add spinach for folate'],kcal:'~430–480',p:'~38–46g'},
+    {name:'Breakfast',time:'7:00 AM',kcal:'390',p:'26',c:'38',f:'14',sw:'breakfast',items:[
+      {n:'3 scrambled eggs in 1 tsp oil',kcal:220,p:18,c:2,f:16},
+      {n:'1 roti or whole wheat toast',kcal:100,p:3,c:20,f:2},
+      {n:'1 medium banana',kcal:70,p:1,c:18,f:0},
+    ]},
+    {name:'Mid-morning snack',time:'10:00 AM',kcal:'160',p:'26',c:'18',f:'2',items:[
+      {n:'1 scoop whey shake',kcal:120,p:25,c:3,f:2},
+      {n:'1 orange or apple',kcal:65,p:1,c:16,f:0},
+    ]},
+    {name:'Lunch',time:'1:00 PM',tags:['indian'],kcal:'520',p:'46',c:'52',f:'10',sw:'lnv',items:[
+      {n:'Chicken curry (2 pieces, no skin)',kcal:220,p:30,c:6,f:8},
+      {n:'1 cup moong dal',kcal:120,p:9,c:20,f:1},
+      {n:'¾ cup cooked rice',kcal:150,p:3,c:33,f:0},
+      {n:'1 cup sabzi + salad + lemon on dal',kcal:55,p:2,c:10,f:1},
+    ]},
+    {name:'Post-work snack',time:'4:00 PM',kcal:'180',p:'12',c:'24',f:'4',items:[
+      {n:'1 cup dahi with jeera',kcal:100,p:9,c:8,f:3},
+      {n:'Handful roasted chana or 1 pear',kcal:80,p:3,c:14,f:2},
+    ]},
+    {name:'Dinner — red lentil pasta',time:'7:00 PM',tags:['pasta'],kcal:'455',p:'42',c:'52',f:'10',items:[
+      {n:'85g red lentil pasta (dry)',kcal:280,p:20,c:42,f:2},
+      {n:'150g shrimp (Option A)',kcal:100,p:20,c:0,f:2},
+      {n:'OR 100g ground chicken (Option B)',kcal:120,p:22,c:0,f:4},
+      {n:'Garlic, olive oil, chilli, spinach',kcal:75,p:2,c:4,f:6},
+    ]},
   ]},
   Thu:{label:'Thursday — vegetarian',veg:true,meals:[
-    {name:'Breakfast — overnight oats',time:'7:00 AM',tags:['veg'],items:['½ cup oats + milk + 1 scoop whey','1 tbsp chia seeds + 1 tbsp pumpkin seeds (zinc!)','Top with mango or banana'],kcal:'~420',p:'~36g'},
-    {name:'Mid-morning snack',time:'10:00 AM',tags:['veg'],items:['1 cup plain dahi','Roasted chana (30g) + 1 guava or apple'],kcal:'~185',p:'~14g'},
-    {name:'Lunch',time:'1:00 PM',tags:['indian','veg'],items:['1 cup chana masala','1 cup toor or masoor dal','¾ cup rice or 2 rotis','1 cup green sabzi (palak, methi, or beans)','Lemon on dal'],kcal:'~530',p:'~28g',sw:'lv'},
-    {name:'Post-work snack',time:'4:00 PM',tags:['veg'],items:['1 scoop whey shake','1 pear or orange'],kcal:'~170',p:'~26g'},
-    {name:'Dinner',time:'7:00 PM',tags:['indian','veg'],items:['Paneer bhurji — 80g paneer with spices','2 small phulka rotis','1 cup dal or sabzi','1 cup raita + palak/methi'],kcal:'~470',p:'~28–30g',sw:'dv'},
+    {name:'Breakfast — overnight oats',time:'7:00 AM',tags:['veg'],kcal:'420',p:'36',c:'48',f:'10',items:[
+      {n:'½ cup oats + 200ml low-fat milk',kcal:180,p:9,c:28,f:4},
+      {n:'1 scoop whey protein',kcal:120,p:25,c:3,f:2},
+      {n:'1 tbsp chia seeds + 1 tbsp pumpkin seeds',kcal:90,p:3,c:6,f:6},
+      {n:'Mango or banana topping',kcal:70,p:1,c:17,f:0},
+    ]},
+    {name:'Mid-morning snack',time:'10:00 AM',tags:['veg'],kcal:'185',p:'14',c:'26',f:'4',items:[
+      {n:'1 cup plain dahi',kcal:100,p:9,c:8,f:3},
+      {n:'Roasted chana (30g) + 1 guava or apple',kcal:85,p:5,c:14,f:2},
+    ]},
+    {name:'Lunch',time:'1:00 PM',tags:['indian','veg'],kcal:'530',p:'28',c:'82',f:'8',sw:'lv',items:[
+      {n:'1 cup chana masala',kcal:180,p:10,c:30,f:3},
+      {n:'1 cup toor or masoor dal',kcal:120,p:9,c:20,f:1},
+      {n:'¾ cup rice or 2 rotis',kcal:150,p:4,c:32,f:1},
+      {n:'1 cup green sabzi (palak, methi, beans)',kcal:50,p:3,c:8,f:1},
+      {n:'Lemon on dal',kcal:4,p:0,c:1,f:0},
+    ]},
+    {name:'Post-work snack',time:'4:00 PM',tags:['veg'],kcal:'170',p:'26',c:'20',f:'2',items:[
+      {n:'1 scoop whey shake',kcal:120,p:25,c:3,f:2},
+      {n:'1 pear or orange',kcal:65,p:1,c:16,f:0},
+    ]},
+    {name:'Dinner',time:'7:00 PM',tags:['indian','veg'],kcal:'470',p:'29',c:'50',f:'16',sw:'dv',items:[
+      {n:'Paneer bhurji — 80g paneer',kcal:220,p:14,c:6,f:16},
+      {n:'2 small phulka rotis',kcal:160,p:5,c:32,f:2},
+      {n:'1 cup dal or sabzi',kcal:60,p:5,c:10,f:1},
+      {n:'1 cup raita + palak/methi',kcal:70,p:5,c:7,f:2},
+    ]},
   ]},
   Fri:{label:'Friday',veg:false,meals:[
-    {name:'Breakfast',time:'7:00 AM',items:['Masala omelette — 3 eggs, onion, tomato, chilli, coriander','1 roti or multigrain toast','1 medium banana'],kcal:'~385',p:'~25g',sw:'breakfast'},
-    {name:'Mid-morning snack',time:'10:00 AM',items:['1 scoop whey shake','Small handful walnuts + 1 apple'],kcal:'~190',p:'~28g'},
-    {name:'Lunch',time:'1:00 PM',tags:['indian'],items:['Fish curry — 150g fish in light tomato-onion gravy','1 cup moong dal','¾ cup rice or 2 rotis','1 cup palak sabzi (folate — non-negotiable)','Small bowl dahi'],kcal:'~510',p:'~44g',sw:'lnv'},
-    {name:'Post-work snack',time:'4:00 PM',items:['1 cup Greek yogurt or dahi','Mixed berries or 1 orange'],kcal:'~180',p:'~14g'},
-    {name:'Dinner',time:'7:00 PM',tags:['indian'],items:['Chicken keema (100g) with peas — minimal oil','2 small phulka rotis','1 cup dahi or raita','Sliced cucumber + onion'],kcal:'~470',p:'~38g',sw:'di'},
+    {name:'Breakfast',time:'7:00 AM',kcal:'385',p:'25',c:'38',f:'14',sw:'breakfast',items:[
+      {n:'Masala omelette — 3 eggs, onion, tomato, chilli',kcal:220,p:18,c:6,f:14},
+      {n:'1 roti or multigrain toast',kcal:100,p:3,c:20,f:2},
+      {n:'1 medium banana',kcal:70,p:1,c:18,f:0},
+    ]},
+    {name:'Mid-morning snack',time:'10:00 AM',kcal:'190',p:'28',c:'16',f:'7',items:[
+      {n:'1 scoop whey shake',kcal:120,p:25,c:3,f:2},
+      {n:'Small handful walnuts (20g)',kcal:55,p:1,c:1,f:6},
+      {n:'1 apple',kcal:80,p:0,c:21,f:0},
+    ]},
+    {name:'Lunch',time:'1:00 PM',tags:['indian'],kcal:'510',p:'44',c:'52',f:'10',sw:'lnv',items:[
+      {n:'Fish curry — 150g fish in tomato gravy',kcal:200,p:30,c:8,f:6},
+      {n:'1 cup moong dal',kcal:120,p:9,c:20,f:1},
+      {n:'¾ cup rice or 2 rotis',kcal:150,p:3,c:33,f:0},
+      {n:'1 cup palak sabzi',kcal:45,p:3,c:6,f:1},
+      {n:'Small bowl dahi',kcal:60,p:5,c:5,f:2},
+    ]},
+    {name:'Post-work snack',time:'4:00 PM',kcal:'180',p:'14',c:'24',f:'3',items:[
+      {n:'1 cup Greek yogurt or dahi',kcal:100,p:12,c:7,f:2},
+      {n:'Mixed berries or 1 orange',kcal:80,p:1,c:18,f:0},
+    ]},
+    {name:'Dinner',time:'7:00 PM',tags:['indian'],kcal:'470',p:'38',c:'44',f:'12',sw:'di',items:[
+      {n:'Chicken keema (100g) with peas',kcal:220,p:28,c:8,f:8},
+      {n:'2 small phulka rotis',kcal:160,p:5,c:32,f:2},
+      {n:'1 cup dahi or raita',kcal:70,p:5,c:7,f:2},
+      {n:'Sliced cucumber + onion',kcal:20,p:1,c:4,f:0},
+    ]},
   ]},
   Sat:{label:'Saturday — brunch day',veg:false,meals:[
-    {name:'Brunch (replaces breakfast + lunch)',time:'10:00–10:30 AM',tags:['indian'],items:['Masala omelette — 3 eggs, onion, tomato, chilli','Poha (1 cup) with peanuts','1 cup chai (less sugar)','1 banana or bowl of papaya'],kcal:'~680',p:'~34g'},
-    {name:'Post-walk snack',time:'2:30–3:30 PM',items:['1 scoop whey shake','Handful walnuts (20g) + 1 apple'],kcal:'~270',p:'~28g'},
-    {name:'Dinner',time:'7:00 PM',tags:['indian'],items:['Rajma chawal — 1 cup rajma + ¾ cup rice','1 cup raita or plain dahi','1 cup sabzi or salad + leafy green'],kcal:'~530',p:'~26g',sw:'di'},
+    {name:'Brunch (replaces breakfast + lunch)',time:'10:00–10:30 AM',tags:['indian'],kcal:'680',p:'34',c:'82',f:'20',items:[
+      {n:'Masala omelette — 3 eggs, onion, tomato',kcal:220,p:18,c:6,f:14},
+      {n:'Poha (1 cup) with peanuts',kcal:270,p:8,c:48,f:6},
+      {n:'1 cup chai (less sugar)',kcal:60,p:2,c:10,f:2},
+      {n:'1 banana or bowl of papaya',kcal:70,p:1,c:18,f:0},
+    ]},
+    {name:'Post-walk snack',time:'2:30–3:30 PM',kcal:'270',p:'28',c:'22',f:'8',items:[
+      {n:'1 scoop whey shake',kcal:120,p:25,c:3,f:2},
+      {n:'Handful walnuts (20g)',kcal:55,p:1,c:1,f:6},
+      {n:'1 apple',kcal:80,p:0,c:21,f:0},
+    ]},
+    {name:'Dinner',time:'7:00 PM',tags:['indian'],kcal:'530',p:'26',c:'82',f:'8',sw:'di',items:[
+      {n:'Rajma — 1 cup',kcal:180,p:12,c:30,f:3},
+      {n:'¾ cup cooked rice',kcal:150,p:3,c:33,f:0},
+      {n:'1 cup raita or plain dahi',kcal:100,p:7,c:9,f:3},
+      {n:'1 cup sabzi + leafy green',kcal:50,p:3,c:8,f:1},
+    ]},
   ]},
   Sun:{label:'Sunday — brunch day',veg:false,meals:[
-    {name:'Brunch — oats (prep Sat night)',time:'10:00–10:30 AM',items:['Overnight oats jar (oats + milk + whey + chia + pumpkin seeds)','3 boiled eggs or egg bhurji alongside','1 cup chai or coffee','Small bowl papaya or mango'],kcal:'~700',p:'~52g'},
-    {name:'Post-walk snack',time:'2:30–3:30 PM',items:['1 cup dahi + sliced banana'],kcal:'~200',p:'~14g'},
-    {name:'Dinner',time:'7:00 PM',tags:['indian'],items:['Grilled salmon or fish (150g) with turmeric + mustard','1 cup dal tadka','2 small phulka rotis','1 cup mixed sabzi + dahi'],kcal:'~490',p:'~46g'},
+    {name:'Brunch — oats (prep Sat night)',time:'10:00–10:30 AM',kcal:'700',p:'52',c:'58',f:'18',items:[
+      {n:'Overnight oats jar (oats + milk + whey + chia + pumpkin seeds)',kcal:420,p:38,c:42,f:12},
+      {n:'3 boiled eggs or egg bhurji',kcal:210,p:18,c:2,f:14},
+      {n:'1 cup chai or coffee',kcal:40,p:1,c:7,f:1},
+      {n:'Small bowl papaya or mango',kcal:65,p:1,c:16,f:0},
+    ]},
+    {name:'Post-walk snack',time:'2:30–3:30 PM',kcal:'200',p:'14',c:'32',f:'3',items:[
+      {n:'1 cup dahi',kcal:100,p:9,c:8,f:3},
+      {n:'Sliced banana',kcal:100,p:1,c:26,f:0},
+    ]},
+    {name:'Dinner',time:'7:00 PM',tags:['indian'],kcal:'490',p:'46',c:'44',f:'14',items:[
+      {n:'Grilled salmon or fish (150g)',kcal:220,p:32,c:0,f:10},
+      {n:'1 cup dal tadka',kcal:120,p:8,c:20,f:2},
+      {n:'2 small phulka rotis',kcal:100,p:3,c:20,f:1},
+      {n:'1 cup mixed sabzi + dahi',kcal:100,p:6,c:12,f:2},
+    ]},
   ]},
 };
-
 const SWAPS={
   breakfast:[{n:'Besan chilla (2) + dahi',c:'~370 kcal · 22g protein'},{n:'Protein shake (1.5 scoops) + 2 boiled eggs',c:'~380 kcal · 44g protein'},{n:'Poha with peanuts + 2 boiled eggs',c:'~400 kcal · 24g protein'}],
   lnv:[{n:'Tandoori chicken (2 pieces) + dal + salad',c:'~480 kcal · 50g protein'},{n:'Grilled fish (150g) + rice + dal',c:'~490 kcal · 44g protein'},{n:'Chicken keema (100g) + 2 rotis + raita',c:'~470 kcal · 40g protein'}],
@@ -800,7 +987,7 @@ function initToday(){try{
     // Show grocery reminder for the weekend before start
     document.getElementById('oats-wrap').innerHTML='<div class="reminder"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><div class="reminder-text">Weekend prep: do your Week 1 grocery shop before Monday. Check the Grocery tab!</div></div>';
     // Still show supplement and daily checklists
-    buildDailyChk();buildSuppChk();
+    buildDailyChk();
     buildPreStartChk();
     return;
   }
@@ -822,7 +1009,8 @@ function initToday(){try{
   if(photoWks.includes(w)&&!G('photo_w'+w)){
     document.getElementById('photo-wrap').innerHTML=`<div class="photo-prompt"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="3"/></svg><div class="photo-text">Week ${w} — take your progress photos today! Front and side.</div><button class="photo-x" onclick="G('photo_w'+${w});this.closest('.photo-prompt').remove()">×</button></div>`;
   }
-  buildTodayChk(day,dow,w);buildDailyChk();buildSuppChk();
+  buildTodayChk(day,dow,w);buildDailyChk();
+  mealCardOffset=0;buildMealNowCard(day.day);renderWater();
 }catch(e){document.getElementById("hero-title").textContent="Error: "+e.message;console.error("initToday error:",e);}}
 function updateSessCount(){
   const done=G('sess_done')||0;
@@ -836,14 +1024,13 @@ function buildPreStartChk(){
     {id:'prep2',label:'Buy resistance bands (Canadian Tire / Sport Chek ~$25-40)',d:'Needed for band hip abduction in Workout A'},
     {id:'prep3',label:'Set up basement gym space',d:'Mat, dumbbells, bench, stability ball — all within reach'},
     {id:'prep4',label:'Take baseline photos today (front + side)',d:'You will thank yourself in 6 weeks'},
-    {id:'prep5',label:'Order or pick up supplements',d:'Vitamin D3, CoQ10, Omega-3 — see Supplements section below'},
   ];
   document.getElementById('today-chk').innerHTML=items.map(function(i){
     var on=saved[i.id]?'on':'', done=saved[i.id]?'done':'';
     return '<div class="chk-item" onclick="togChk(this,\''+i.id+'\',\''+key+'\')"><div class="chk-box '+on+'"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div><div><div class="chk-name '+done+'">'+i.label+'</div><div class="chk-detail">'+i.d+'</div></div></div>';
   }).join('');
 }
-var _chkKey='',_suppKey='';
+var _chkKey='';
 function buildTodayChk(day,dow,w){
   _chkKey='chk_'+new Date().toDateString();const key=_chkKey,saved=G(key)||{};
   let items=[];
@@ -870,17 +1057,6 @@ function buildDailyChk(){
     {id:'greens',label:'Leafy green at dinner',d:'Palak or methi every day — folate for TTC'},
   ];
   document.getElementById('daily-chk').innerHTML=items.map(function(i){return '<div class="chk-item" onclick="togChk(this,\''+i.id+'\',\''+key+'\')">'+'<div class="chk-box '+(saved[i.id]?'on':'')+'"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div>'+'<div><div class="chk-name '+(saved[i.id]?'done':'')+'">'+i.label+'</div><div class="chk-detail">'+i.d+'</div></div></div>';}).join('');
-}
-function buildSuppChk(){
-  _suppKey='supp_'+new Date().toDateString();const key=_suppKey,saved=G(key)||{};
-  const items=[
-    {id:'s1',label:'Your Vitamin D3 (2,000–4,000 IU)',d:'You — daily, critical in Edmonton'},
-    {id:'s2',label:"Wife's prenatal multivitamin",d:'Folate, iron, iodine, B12 — most important supplement'},
-    {id:'s3',label:"Wife's Vitamin D3",d:'Edmonton UV is low — both partners need this'},
-    {id:'s4',label:'CoQ10 — both of you (200mg)',d:'Improves egg quality and sperm motility for TTC over 30'},
-    {id:'s5',label:'Omega-3 fish oil — both (1g DHA+EPA)',d:'Extra important on vegetarian days Tue/Thu'},
-  ];
-  document.getElementById('supp-chk').innerHTML=items.map(function(i){return '<div class="chk-item" onclick="togChk(this,\''+i.id+'\',\''+key+'\')">'+'<div class="chk-box '+(saved[i.id]?'on':'')+'"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div>'+'<div><div class="chk-name '+(saved[i.id]?'done':'')+'">'+i.label+'</div><div class="chk-detail">'+i.d+'</div></div></div>';}).join('');
 }
 function togChk(el,id,key){
   const saved=G(key)||{};const on=!saved[id];saved[id]=on;P(key,saved);
@@ -946,14 +1122,57 @@ function initMeals(){
   }).join('');
   selMealDay(days[map.indexOf(todayDow)]||'Mon');
 }
+function toggleMeal(idx){
+  var rows=document.querySelectorAll('.meal-row');
+  var row=rows[idx];
+  if(!row) return;
+  row.classList.toggle('open');
+}
 function selMealDay(day,el){
-  if(el){document.querySelectorAll('.day-pill').forEach(p=>p.classList.remove('active'));el.classList.add('active');}
-  const data=MEALS[day];
+  if(el){document.querySelectorAll('.day-pill').forEach(function(p){p.classList.remove('active');});el.classList.add('active');}
+  var data=MEALS[day];
   document.getElementById('meal-day-lbl').textContent=data.label;
-  document.getElementById('meal-list').innerHTML=data.meals.map(m=>{
-    const tags=(m.tags||[]).map(t=>t==='indian'?'<span class="meal-tag t-indian">Indian</span>':t==='veg'?'<span class="meal-tag t-veg">Veg</span>':'<span class="meal-tag t-pasta">Pasta</span>').join('');
-    const sw=m.sw?`<button class="swap-btn" onclick="openSwapModal('${m.sw}','${m.name}')">Swap options</button>`:'';
-    return `<div class="meal-row"><div class="meal-top"><div class="meal-name">${m.name}${tags}</div><div class="meal-time">${m.time}</div></div>${m.items.map(i=>`<div class="meal-item">· ${i}</div>`).join('')}<div class="meal-macros"><span class="mac-chip">${m.kcal} kcal</span><span class="mac-chip">${m.p} protein</span></div>${sw}</div>`;
+  // Dynamic day totals
+  var totKcal=0,totP=0,totC=0,totF=0;
+  data.meals.forEach(function(m){totKcal+=parseInt(m.kcal)||0;totP+=parseInt(m.p)||0;totC+=parseInt(m.c)||0;totF+=parseInt(m.f)||0;});
+  var tg=document.getElementById('meal-day-totals');
+  if(tg) tg.innerHTML='<div class="m-card"><div class="m-label">Calories</div><div class="m-val">'+totKcal+'<span class="m-unit"> kcal</span></div></div>'
+    +'<div class="m-card"><div class="m-label">Protein</div><div class="m-val">'+totP+'<span class="m-unit"> g</span></div></div>'
+    +'<div class="m-card"><div class="m-label">Carbs</div><div class="m-val">'+totC+'<span class="m-unit"> g</span></div></div>'
+    +'<div class="m-card"><div class="m-label">Fat</div><div class="m-val">'+totF+'<span class="m-unit"> g</span></div></div>';
+  // Build meal rows
+  document.getElementById('meal-list').innerHTML=data.meals.map(function(m,idx){
+    var tags=(m.tags||[]).map(function(t){return t==='indian'?'<span class="meal-tag t-indian">Indian</span>':t==='veg'?'<span class="meal-tag t-veg">Veg</span>':'<span class="meal-tag t-pasta">Pasta</span>';}).join('');
+    var sw=m.sw?'<button class="swap-btn" onclick="event.stopPropagation();openSwapModal(this.dataset.sw,this.dataset.name)" data-sw="'+m.sw+'" data-name="'+m.name+'">Swap options</button>':'';
+    // Per-item breakdown
+    var itemRows=(m.items||[]).map(function(item){
+      return '<div class="meal-item-row">'
+        +'<div class="meal-item-name">'+item.n+'</div>'
+        +'<div class="meal-item-macros">'
+        +'<span class="item-chip ic-k">'+item.kcal+'</span>'
+        +'<span class="item-chip ic-p">P'+item.p+'</span>'
+        +'<span class="item-chip ic-c">C'+item.c+'</span>'
+        +'<span class="item-chip ic-f">F'+item.f+'</span>'
+        +'</div></div>';
+    }).join('');
+    // Totals row
+    var totRow='<div class="meal-totals-row">'
+      +'<span class="meal-totals-label">Total</span>'
+      +'<span class="mac-chip">'+m.kcal+' kcal</span>'
+      +'<span class="mac-chip mac-p">P '+m.p+'g</span>'
+      +'<span class="mac-chip mac-c">C '+m.c+'g</span>'
+      +'<span class="mac-chip mac-f">F '+m.f+'g</span>'
+      +sw+'</div>';
+    return '<div class="meal-row" onclick="toggleMeal('+idx+')">'
+      +'<div class="meal-row-header">'
+      +'<div><div class="meal-name">'+m.name+tags+'</div><div class="meal-time">'+m.time+'</div></div>'
+      +'<span class="meal-chevron">▾</span>'
+      +'</div>'
+      +'<div class="meal-items-wrap">'
+      +itemRows
+      +totRow
+      +'</div>'
+      +'</div>';
   }).join('');
 }
 
@@ -1294,6 +1513,137 @@ function initGrocery() {
   if (!G(getGrocKey(nextW))) { P(getGrocKey(nextW), buildDefaultList(nextW)); }
   buildGrocWeekSel();
   renderGrocList();
+}
+
+
+// ══════════════════════════════════════════
+// FEATURE 2: TODAY'S MEAL CARD
+// ══════════════════════════════════════════
+const MEAL_TIMES = {
+  Mon: [{h:7,m:'Breakfast'},{h:10,m:'Mid-morning snack'},{h:13,m:'Lunch'},{h:16,m:'Post-work snack'},{h:19,m:'Dinner'}],
+  Tue: [{h:7,m:'Breakfast — overnight oats'},{h:10,m:'Mid-morning snack'},{h:13,m:'Lunch'},{h:16,m:'Post-work snack'},{h:19,m:'Dinner'}],
+  Wed: [{h:7,m:'Breakfast'},{h:10,m:'Mid-morning snack'},{h:13,m:'Lunch'},{h:16,m:'Post-work snack'},{h:19,m:'Dinner — red lentil pasta'}],
+  Thu: [{h:7,m:'Breakfast — overnight oats'},{h:10,m:'Mid-morning snack'},{h:13,m:'Lunch'},{h:16,m:'Post-work snack'},{h:19,m:'Dinner'}],
+  Fri: [{h:7,m:'Breakfast'},{h:10,m:'Mid-morning snack'},{h:13,m:'Lunch'},{h:16,m:'Post-work snack'},{h:19,m:'Dinner'}],
+  Sat: [{h:10,m:'Brunch (replaces breakfast + lunch)'},{h:14,m:'Post-walk snack'},{h:19,m:'Dinner'}],
+  Sun: [{h:10,m:'Brunch — oats (prep Sat night)'},{h:14,m:'Post-walk snack'},{h:19,m:'Dinner'}],
+};
+
+var mealCardOffset = 0; // 0=current/next, +1=next+1 etc
+
+function getCurrentMealInfo(dayKey) {
+  var h = new Date().getHours();
+  var times = MEAL_TIMES[dayKey];
+  if (!times) return null;
+  var idx = 0;
+  var isNow = false;
+  // Find current meal: started but next hasn't started yet
+  for (var i = 0; i < times.length; i++) {
+    if (h >= times[i].h) {
+      idx = i;
+      isNow = true;
+    }
+  }
+  // If before first meal of day, show first as "next"
+  if (h < times[0].h) { idx = 0; isNow = false; }
+  return {idx: idx, isNow: isNow, total: times.length};
+}
+
+function buildMealNowCard(dayKey) {
+  var wrap = document.getElementById('meal-now-wrap');
+  if (!wrap) return;
+  var info = getCurrentMealInfo(dayKey);
+  if (!info) { wrap.innerHTML = ''; return; }
+  var displayIdx = (info.idx + mealCardOffset + info.total) % info.total;
+  var meals = MEALS[dayKey].meals;
+  // Find matching meal by name
+  var meal = null;
+  var times = MEAL_TIMES[dayKey];
+  for (var i = 0; i < meals.length; i++) {
+    if (meals[i].name === times[displayIdx].m) { meal = meals[i]; break; }
+  }
+  if (!meal) meal = meals[displayIdx] || meals[0];
+
+  var isActualNow = (displayIdx === info.idx && info.isNow);
+  var badge = isActualNow
+    ? '<span class="meal-now-badge badge-now">Now</span>'
+    : '<span class="meal-now-badge badge-next">Up next</span>';
+  var tags = (meal.tags||[]).map(function(t){
+    return t==='indian'?'<span class="meal-tag t-indian">Indian</span>':t==='veg'?'<span class="meal-tag t-veg">Veg</span>':'<span class="meal-tag t-pasta">Pasta</span>';
+  }).join('');
+  var items = meal.items.map(function(i){ return '<div class="meal-now-item">· '+i.n+' <span style="font-size:11px;color:var(--text3);font-family:monospace">'+i.kcal+'kcal P'+i.p+' C'+i.c+' F'+i.f+'</span></div>'; }).join('');
+  var macros = '<span class="mac-chip">'+meal.kcal+' kcal</span><span class="mac-chip mac-p">P '+meal.p+'g</span><span class="mac-chip mac-c">C '+meal.c+'g</span><span class="mac-chip mac-f">F '+meal.f+'g</span>';
+  var prevI = (displayIdx - 1 + info.total) % info.total;
+  var nextI = (displayIdx + 1) % info.total;
+  wrap.innerHTML = '<div class="meal-now-card">'
+    + '<div class="meal-now-hdr">'+badge+'<span class="meal-now-time">'+meal.time+'</span></div>'
+    + '<div class="meal-now-name">'+meal.name+tags+'</div>'
+    + '<div class="meal-now-items">'+items+'</div>'
+    + '<div class="meal-now-macros">'+macros+'</div>'
+    + '<div class="meal-now-nav">'
+    + '<button class="meal-nav-btn" onclick="prevMeal()">← '+MEAL_TIMES[dayKey][prevI].m.split(' ')[0]+'...</button>'
+    + '<button class="meal-nav-btn" onclick="nextMeal()">'+MEAL_TIMES[dayKey][nextI].m.split(' ')[0]+'... →</button>'
+    + '</div></div>';
+}
+
+function nextMeal(){ mealCardOffset++; var dow=getDow(); buildMealNowCard(SCHED[dow].day); }
+function prevMeal(){ mealCardOffset--; var dow=getDow(); buildMealNowCard(SCHED[dow].day); }
+
+// ══════════════════════════════════════════
+// FEATURE 3: WATER TRACKER
+// ══════════════════════════════════════════
+var WATER_GOAL_ML = 3500;
+
+function getWaterKey(){ return 'water_'+new Date().toDateString(); }
+
+function getWaterMl(){ return G(getWaterKey()) || 0; }
+
+function addWater(ml){
+  var cur = getWaterMl();
+  var next = Math.min(cur + ml, WATER_GOAL_ML + 500);
+  P(getWaterKey(), next);
+  renderWater();
+  // Update daily checklist water item visually
+  var cur2 = getWaterMl();
+  if(cur2 >= WATER_GOAL_ML){
+    var key = _chkKey || ('chk_'+new Date().toDateString());
+    var saved = G(key)||{};
+    if(!saved['water']){ saved['water']=true; P(key,saved); buildDailyChk(); }
+  }
+}
+
+function resetWater(){
+  P(getWaterKey(), 0);
+  renderWater();
+}
+
+function renderWater(){
+  var wrap = document.getElementById('water-wrap');
+  if(!wrap) return;
+  var ml = getWaterMl();
+  var pct = Math.min(Math.round((ml / WATER_GOAL_ML) * 100), 100);
+  var L = (ml / 1000).toFixed(1);
+  var cups = Math.round(WATER_GOAL_ML / 250); // 14 cups = 3500ml
+  var filled = Math.round(ml / 250);
+  var cupsHtml = '';
+  for(var i=0; i<cups; i++){
+    cupsHtml += '<div class="water-cup '+(i<filled?'filled':'')+'" onclick="addWater(250)">💧</div>';
+  }
+  var barColor = pct >= 100 ? 'var(--green)' : 'var(--blue)';
+  wrap.innerHTML = '<div class="water-card">'
+    + '<div class="water-top"><div><div class="water-title">💧 Water intake</div><div class="water-target">Target: 3.5L / day</div></div>'
+    + '<div style="text-align:right"><div class="water-amount">'+L+'<span class="water-unit"> L</span></div>'
+    + (pct>=100?'<div style="font-size:11px;color:var(--green);font-weight:600">✓ Goal reached!</div>':'<div style="font-size:11px;color:var(--text3)">'+pct+'% of goal</div>')
+    + '</div></div>'
+    + '<div class="water-cups">'+cupsHtml+'</div>'
+    + '<div class="water-bar-wrap"><div class="water-bar-bg"><div class="water-bar-fill" style="width:'+pct+'%;background:'+barColor+'"></div></div>'
+    + '<div class="water-bar-labels"><span>0</span><span>1L</span><span>2L</span><span>3.5L</span></div></div>'
+    + '<div class="water-btns">'
+    + '<button class="water-btn" onclick="addWater(250)">+ 250ml</button>'
+    + '<button class="water-btn" onclick="addWater(500)">+ 500ml</button>'
+    + '<button class="water-btn" onclick="addWater(750)">+ 750ml</button>'
+    + '<button class="water-btn water-btn-clear" onclick="resetWater()">Reset</button>'
+    + '</div></div>';
 }
 
 // ── INIT ──
